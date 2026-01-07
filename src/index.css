@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --brand: 0 0 0;
+  }
+  html, body { @apply h-full; }
+  body { @apply bg-neutral-100 text-gray-900 antialiased; }
+  h1, h2, h3,.heading { @apply font-black font-rajdhani text-[color:rgb(var(--brand))] ; }
+}
+
+@theme {
+  --font-rajdhani: "Rajdhani", sans-serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+}

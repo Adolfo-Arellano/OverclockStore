@@ -1,0 +1,50 @@
+.swatchesFlow {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: .5rem;
+}
+
+.btnSelected {
+  outline:2px solid #000;
+}
+
+.fill {
+  display:block;
+  width:100%;
+  height:100%;
+}
+
+.fill--black {
+  background:#000;
+}
+
+.fill--red-black {
+  background:linear-gradient(135deg,#b91c1c 50%,#000 50%);
+}
+
+.fill--pink-white {
+  background:linear-gradient(135deg,#f9a8d4 50%,#fff 50%);
+}
+
+.fill--white {
+  background:#fff;
+}
+
+.fill--lavender-black {
+  background:linear-gradient(135deg,#d5d0ee 50%,#000 50%);
+}
+
+.fill--blue-white {
+  background:linear-gradient(135deg,#4c6190 50%,#fff 50%);
+}
+
+.fill--multi{
+  background: linear-gradient(
+    135deg,
+    #fc2a30 0,   #fc2a30 40%,
+    #2679d7 40%, #2679d7 60%,
+    #000    60%, #000    80%,
+    #fce200 80%, #fce200 100%
+  );
+}
