@@ -1,13 +1,17 @@
-import React from 'react'
 import Banner from './Banner'
 import BenefitsBar from './BenefitsBar'
 import FeatureRow from './FeatureRow'
 import Categories from './Categories'
 import ProductsPreview from './ProductsPreview'
 import { db } from '../data/db';
+import type { AddToCartFn, Product } from '../types/shop';
 
-const Home = ({ addToCart }) => {
-  const destacados = Array.isArray(db) ? db.slice(0, 4) : [];
+type HomeProps = {
+  addToCart: AddToCartFn;
+};
+
+const Home = ({ addToCart }: HomeProps) => {
+  const destacados: Product[] = Array.isArray(db) ? db.slice(0, 4) : [];
 
   return (
     <>

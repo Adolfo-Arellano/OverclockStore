@@ -1,26 +1,43 @@
 import { useState } from "react";
+import type { ChangeEvent, FormEvent } from "react";
+import type { z } from "zod";
 import { contactSchema } from "../validators/contactSchema";
 
-const Contact = () => {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "", consent: false });
-  const [status, setStatus] = useState(null);
-  const [errors, setErrors] = useState({});
+type ContactForm = z.infer<typeof contactSchema>;
 
-  const onChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setForm((f) => ({ ...f, [name]: type === "checkbox" ? checked : value }));
+const Contact = () => {
+  const [form, setForm] = useState<ContactForm>({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+    consent: false,
+  });
+  const [status, setStatus] = useState<"ok" | "error" | null>(null);
+  const [errors, setErrors] = useState<Partial<Record<keyof ContactForm, string>>>({});
+
+  const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const target = e.target as HTMLInputElement | HTMLTextAreaElement;
+    const { name, value } = target;
+    if (target instanceof HTMLInputElement && target.type === "checkbox") {
+      setForm((f) => ({ ...f, [name]: target.checked }));
+      return;
+    }
+    setForm((f) => ({ ...f, [name]: value }));
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     const result = contactSchema.safeParse(form);
 
     if (!result.success) {
-      const fieldErrors = {};
+      const fieldErrors: Partial<Record<keyof ContactForm, string>> = {};
       result.error.issues.forEach((issue) => {
         const field = issue.path[0];
-        fieldErrors[field] = issue.message;
+        if (typeof field === "string" && field in form) {
+          fieldErrors[field as keyof ContactForm] = issue.message;
+        }
       });
       setErrors(fieldErrors);
       setStatus("error");

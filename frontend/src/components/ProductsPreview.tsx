@@ -1,4 +1,13 @@
 import ProductCard from "./ProductCard";
+import type { AddToCartFn, Product } from "../types/shop";
+
+type ProductsPreviewProps = {
+  pCards?: Product[];
+  addToCart: AddToCartFn;
+  title?: string;
+  subtitle?: string;
+  max?: number;
+};
 
 const ProductsPreview = ({
   pCards = [],
@@ -6,7 +15,7 @@ const ProductsPreview = ({
   title = "Nuestra Colección",
   subtitle = "Destacados de la semana",
   max = 4,
-}) => {
+}: ProductsPreviewProps) => {
   const items = Array.isArray(pCards) ? pCards.slice(0, max) : [];
 
   return (
