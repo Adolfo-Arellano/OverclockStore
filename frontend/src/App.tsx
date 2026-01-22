@@ -6,6 +6,8 @@ import Home from "./components/Home";
 import Products from "./components/Products";
 import Contact from "./components/Contact";
 import SecurityPolicy from "./components/SecurityPolicy";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 import { db } from "./data/db";
 import type { CartItem, Product, ProductId } from "./types/shop";
 
@@ -77,6 +79,8 @@ const App = () => {
           <Route path="/products" element={<Products pCards={pCards} addToCart={addToCart} />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/securityPolicy" element={<SecurityPolicy />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="*" element={<h2>Página no encontrada</h2>} />
         </Routes>
       </main>
