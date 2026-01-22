@@ -33,7 +33,9 @@ export default function Nav({ cart, removeFromCart, cleanCart, increaseQuantity,
             <Search className="h-7 w-7 text-gray-700" />
           </button>
           <button className="rounded-full p-2 hover:bg-gray-300/50 cursor-pointer">
-            <User className="h-7 w-7 text-gray-700" />
+            <NavLink to="/login">
+              <User to="/login" className="h-7 w-7 text-gray-700"></User>
+            </NavLink>
           </button>
 
           <CartMenu

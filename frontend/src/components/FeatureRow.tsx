@@ -1,6 +1,14 @@
 import { ArrowRight } from "lucide-react";
 
-const FeatureRow = ({ title, desc, image, reverse = false, eyebrow }) => {
+type FeatureRowProps = {
+  title: string;
+  desc: string;
+  image: string;
+  reverse?: boolean;
+  eyebrow?: string;
+};
+
+const FeatureRow = ({ title, desc, image, reverse = false, eyebrow }: FeatureRowProps) => {
   return (
     <section className="mx-auto max-w-8xl px-6">
       <div
